@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import {Cross2Icon} from '@radix-ui/react-icons';
+import {Cross2Icon, PlusIcon} from '@radix-ui/react-icons';
 import {violet, blackA, mauve, green} from '@radix-ui/colors';
 import {styled, keyframes} from '@stitches/react';
 
@@ -8,7 +8,10 @@ const SideBar = () => (
   <SideBarRoot>
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button>Edit profile</Button>
+        <Button>
+          <PlusIcon />
+          New chat
+        </Button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <DialogOverlay />
@@ -104,24 +107,25 @@ const Button = styled('button', {
   all: 'unset',
   display: 'inline-flex',
   alignItems: 'center',
-  justifyContent: 'center',
   borderRadius: 4,
   padding: '0 15px',
   fontSize: 15,
   lineHeight: 1,
   fontWeight: 500,
-  height: 35,
 
   variants: {
     variant: {
       violet: {
+        height: 46,
+        width: '100%',
         backgroundColor: 'white',
         color: violet.violet11,
         boxShadow: `0 2px 10px ${blackA.blackA7}`,
         '&:hover': {backgroundColor: mauve.mauve3},
-        '&:focus': {boxShadow: `0 0 0 2px black`},
+        '&:focus': {boxShadow: `0 0 0 2px ${violet.violet7}`},
       },
       green: {
+        height: 35,
         backgroundColor: green.green4,
         color: green.green11,
         '&:hover': {backgroundColor: green.green5},

@@ -1,15 +1,16 @@
 import React from 'react';
 import SideBar from './components/SideBar';
 import ToolbarDemo from './components/ToolBar';
+import Content from './Content';
 
 import {styled} from '@stitches/react';
 
 const DialogDemo = () => (
   <>
-    <ToolbarDemo />
+    {/* <ToolbarDemo /> */}
     <DialogWrapper>
       <SideBar />
-      content
+      <Content />
     </DialogWrapper>
   </>
 );
