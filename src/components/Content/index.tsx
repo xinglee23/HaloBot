@@ -74,11 +74,7 @@ const DialogContent = () => {
     messages.push({role: 'user', content});
     messages.push({role: 'assistant', content: ''});
     // 调用接口 获取数据
-    const {status, data, message} = await chat(
-      messages,
-      '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',
-      GPT_V
-    );
+    const {status, data, message} = await chat(messages, 'xxxxxxx', GPT_V);
 
     if (status === 'success' && data) {
       const reader = data.getReader();
