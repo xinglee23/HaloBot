@@ -2,7 +2,7 @@ import {Storage} from '../libs/utils';
 
 // localstorage key
 
-export function operationKey() {
+export const useOperationKey = () => {
   const getKey = (): string => {
     const key: string | null = Storage.get('apiKey');
     return key === null ? '' : key;
@@ -16,4 +16,4 @@ export function operationKey() {
     getKey,
     setKey,
   };
-}
+};

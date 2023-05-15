@@ -3,7 +3,7 @@ import CryptoJS from 'crypto-js';
 // 秘钥
 const KEY = 'SuMingcheng';
 // 向量
-const IV = CryptoJS.enc.Utf8.parse('ThisIsAnIV123456');
+// const IV = CryptoJS.enc.Utf8.parse('ThisIsAnIV123456');
 
 // 加密函数
 export const encryptString = (plaintext: string) => {

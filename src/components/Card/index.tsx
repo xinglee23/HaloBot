@@ -1,21 +1,32 @@
-import React from 'react';
-import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+import {blackA} from '@radix-ui/colors';
 import {styled} from '@stitches/react';
-import {blackA, teal} from '@radix-ui/colors';
+import Avatar from '../Avatar';
 
-const Card = (props: {text: string}) => (
-  <Box
-    css={{
-      borderRadius: 6,
-      overflow: 'hidden',
-      boxShadow: `0 2px 10px ${blackA.blackA7}`,
-    }}
-  >
-    {props.text}
-  </Box>
+interface IProps {
+  text: string;
+  type: 'answer' | 'question';
+}
+
+const Card = (props: IProps) => (
+  <CardRoot>
+    <Avatar type={props.type} />
+    <Box
+      css={{
+        borderRadius: 6,
+        overflow: 'hidden',
+        boxShadow: `0 2px 10px ${blackA.blackA7}`,
+      }}
+    >
+      {props.text}
+    </Box>
+  </CardRoot>
 );
 
+const CardRoot = styled('div', {
+  display: 'flex',
+});
 const Box = styled('div', {
+  marginLeft: 10,
   marginBottom: 20,
   padding: 10,
   minHeight: 20,

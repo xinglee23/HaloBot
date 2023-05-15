@@ -1,14 +1,21 @@
-import React from 'react';
-import * as Label from '@radix-ui/react-label';
 import {styled} from '@stitches/react';
 import {blackA} from '@radix-ui/colors';
-// import {send} from '@radix-ui/react-icons';
 
-const LabelInput = () => (
-  <Flex>
-    <Input type='text' id='firstName' defaultValue='Pedro Duarte' />
-  </Flex>
-);
+const LabelInput = () => {
+  const handleChange = (e: any) => {
+    console.log('eeeeee', e.target.value);
+  };
+  return (
+    <Flex>
+      <Input
+        type='text'
+        id='firstName'
+        onChange={handleChange}
+        defaultValue='Pedro Duarte'
+      />
+    </Flex>
+  );
+};
 
 const Input = styled('input', {
   all: 'unset',

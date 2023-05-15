@@ -1,10 +1,9 @@
-import React from 'react';
 import * as Toolbar from '@radix-ui/react-toolbar';
 import {violet, blackA, mauve} from '@radix-ui/colors';
 
 import {styled} from '@stitches/react';
 
-const ToolbarDemo = () => (
+const ToolbarWrapper = () => (
   <ToolbarRoot aria-label='Formatting options'>
     <ToolbarTitle css={{marginRight: 10}}>HaloBot</ToolbarTitle>
     <ToolbarButton css={{marginLeft: 'auto'}}>Share</ToolbarButton>
@@ -63,4 +62,4 @@ const ToolbarButton = styled(
   {'&:hover': {backgroundColor: violet.violet10, color: 'white'}}
 );
 
-export default ToolbarDemo;
+export default ToolbarWrapper;

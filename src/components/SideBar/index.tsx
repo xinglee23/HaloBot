@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import {Cross2Icon, PlusIcon} from '@radix-ui/react-icons';
 import {violet, blackA, mauve, green} from '@radix-ui/colors';
