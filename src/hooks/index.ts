@@ -1,4 +1,4 @@
-import {Storage} from '../libs/utils';
+import { Storage } from '../libs/utils';
 
 // localstorage key
 

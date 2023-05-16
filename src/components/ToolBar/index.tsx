@@ -1,12 +1,12 @@
 import * as Toolbar from '@radix-ui/react-toolbar';
-import {violet, blackA, mauve} from '@radix-ui/colors';
+import { violet, blackA, mauve } from '@radix-ui/colors';
 
-import {styled} from '@stitches/react';
+import { styled } from '@stitches/react';
 
 const ToolbarWrapper = () => (
   <ToolbarRoot aria-label='Formatting options'>
-    <ToolbarTitle css={{marginRight: 10}}>HaloBot</ToolbarTitle>
-    <ToolbarButton css={{marginLeft: 'auto'}}>Share</ToolbarButton>
+    <ToolbarTitle css={{ marginRight: 10 }}>HaloBot</ToolbarTitle>
+    <ToolbarButton css={{ marginLeft: 'auto' }}>Share</ToolbarButton>
   </ToolbarRoot>
 );
 
@@ -31,8 +31,8 @@ const itemStyles = {
   lineHeight: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  '&:hover': {backgroundColor: violet.violet3, color: violet.violet11},
-  '&:focus': {position: 'relative', boxShadow: `0 0 0 2px ${violet.violet7}`},
+  '&:hover': { backgroundColor: violet.violet3, color: violet.violet11 },
+  '&:focus': { position: 'relative', boxShadow: `0 0 0 2px ${violet.violet7}` },
 };
 
 const ToolbarTitle = styled(
@@ -47,7 +47,7 @@ const ToolbarTitle = styled(
     fontSize: 18,
     fontWeight: 800,
   },
-  {'&:hover': {backgroundColor: 'transparent', cursor: 'pointer'}}
+  { '&:hover': { backgroundColor: 'transparent', cursor: 'pointer' } }
 );
 
 const ToolbarButton = styled(
@@ -59,7 +59,7 @@ const ToolbarButton = styled(
     color: 'white',
     backgroundColor: violet.violet9,
   },
-  {'&:hover': {backgroundColor: violet.violet10, color: 'white'}}
+  { '&:hover': { backgroundColor: violet.violet10, color: 'white' } }
 );
 
 export default ToolbarWrapper;

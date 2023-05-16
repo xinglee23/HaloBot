@@ -1,5 +1,5 @@
-import {styled} from '@stitches/react';
-import {blackA} from '@radix-ui/colors';
+import { styled } from '@stitches/react';
+import { blackA } from '@radix-ui/colors';
 import sendSvg from '../../assets/send.svg';
 
 interface IProps {
@@ -38,8 +38,8 @@ const Input = styled('input', {
   textAlign: 'left',
   backgroundColor: blackA.blackA5,
   boxShadow: `0 0 0 1px ${blackA.blackA9}`,
-  '&:focus': {boxShadow: `0 0 0 2px black`},
-  '&::selection': {backgroundColor: blackA.blackA9, color: 'white'},
+  '&:focus': { boxShadow: `0 0 0 2px black` },
+  '&::selection': { backgroundColor: blackA.blackA9, color: 'white' },
 });
 
 const SendImg = styled('img', {

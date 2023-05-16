@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import {Cross2Icon, PlusIcon} from '@radix-ui/react-icons';
-import {violet, blackA, mauve, green} from '@radix-ui/colors';
-import {styled, keyframes} from '@stitches/react';
+import { Cross2Icon, PlusIcon } from '@radix-ui/react-icons';
+import { violet, blackA, mauve, green } from '@radix-ui/colors';
+import { styled, keyframes } from '@stitches/react';
 
 const SideBar = () => (
   <SideBarRoot>
@@ -27,7 +27,7 @@ const SideBar = () => (
             <Label htmlFor='username'>Username</Label>
             <Input id='username' defaultValue='@peduarte' />
           </Fieldset>
-          <Flex css={{marginTop: 25, justifyContent: 'flex-end'}}>
+          <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
             <Dialog.Close asChild>
               <Button variant='green'>Save changes</Button>
             </Dialog.Close>
@@ -53,13 +53,13 @@ const SideBarRoot = styled('div', {
 });
 
 const overlayShow = keyframes({
-  '0%': {opacity: 0},
-  '100%': {opacity: 1},
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
 });
 
 const contentShow = keyframes({
-  '0%': {opacity: 0, transform: 'translate(-50%, -48%) scale(.96)'},
-  '100%': {opacity: 1, transform: 'translate(-50%, -50%) scale(1)'},
+  '0%': { opacity: 0, transform: 'translate(-50%, -48%) scale(.96)' },
+  '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
 });
 
 const DialogOverlay = styled(Dialog.Overlay, {
@@ -83,7 +83,7 @@ const DialogContent = styled(Dialog.Content, {
   maxHeight: '85vh',
   padding: 25,
   animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
-  '&:focus': {outline: 'none'},
+  '&:focus': { outline: 'none' },
 });
 
 const DialogTitle = styled(Dialog.Title, {
@@ -100,7 +100,7 @@ const DialogDescription = styled(Dialog.Description, {
   lineHeight: 1.5,
 });
 
-const Flex = styled('div', {display: 'flex'});
+const Flex = styled('div', { display: 'flex' });
 
 const Button = styled('button', {
   all: 'unset',
@@ -120,15 +120,15 @@ const Button = styled('button', {
         backgroundColor: 'white',
         color: violet.violet11,
         boxShadow: `0 2px 10px ${blackA.blackA7}`,
-        '&:hover': {backgroundColor: mauve.mauve3},
-        '&:focus': {boxShadow: `0 0 0 2px ${violet.violet7}`},
+        '&:hover': { backgroundColor: mauve.mauve3 },
+        '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
       },
       green: {
         height: 35,
         backgroundColor: green.green4,
         color: green.green11,
-        '&:hover': {backgroundColor: green.green5},
-        '&:focus': {boxShadow: `0 0 0 2px ${green.green7}`},
+        '&:hover': { backgroundColor: green.green5 },
+        '&:focus': { boxShadow: `0 0 0 2px ${green.green7}` },
       },
     },
   },
@@ -152,8 +152,8 @@ const IconButton = styled('button', {
   top: 10,
   right: 10,
 
-  '&:hover': {backgroundColor: violet.violet4},
-  '&:focus': {boxShadow: `0 0 0 2px ${violet.violet7}`},
+  '&:hover': { backgroundColor: violet.violet4 },
+  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
 });
 
 const Fieldset = styled('fieldset', {
@@ -186,7 +186,7 @@ const Input = styled('input', {
   boxShadow: `0 0 0 1px ${violet.violet7}`,
   height: 35,
 
-  '&:focus': {boxShadow: `0 0 0 2px ${violet.violet8}`},
+  '&:focus': { boxShadow: `0 0 0 2px ${violet.violet8}` },
 });
 
 export default SideBar;
