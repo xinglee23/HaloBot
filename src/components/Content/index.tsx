@@ -88,25 +88,34 @@ const DialogContent = () => {
     sendChatMessage('this is a test!');
   }, []);
 
+  const handleClick = () => {};
+
   return (
     <DialogWrapper>
-      <div>
+      <ContextInner>
         {msgTxt.map((v) => (
           <div key={v.createdAt}>
             <Card type='question' text={v.question} />
             <Card type='answer' text={v.answer} />
           </div>
         ))}
-      </div>
-      <LabelInput />
+      </ContextInner>
+      <LabelInput onClick={handleClick} />
     </DialogWrapper>
   );
 };
 
 const DialogWrapper = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
   padding: '20px 20px 20px',
   width: '100%',
   height: '80vh',
+  overflow: 'auto',
+});
+
+const ContextInner = styled('div', {
+  width: 800,
   overflow: 'auto',
 });
 
