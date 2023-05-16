@@ -1,7 +1,11 @@
-import {styled} from '@stitches/react';
-import {blackA} from '@radix-ui/colors';
+import { styled } from '@stitches/react';
+import { blackA } from '@radix-ui/colors';
+import sendSvg from '../../assets/send.svg';
 
-const LabelInput = () => {
+interface IProps {
+  onClick: () => void;
+}
+const LabelInput = (props: IProps) => {
   const handleChange = (e: any) => {
     console.log('eeeeee', e.target.value);
   };
@@ -13,6 +17,7 @@ const LabelInput = () => {
         onChange={handleChange}
         defaultValue='Pedro Duarte'
       />
+      <SendImg src={sendSvg} onClick={props.onClick} />
     </Flex>
   );
 };
@@ -24,6 +29,7 @@ const Input = styled('input', {
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 4,
+  marginRight: 10,
   padding: '0 10px',
   height: 50,
   fontSize: 15,
@@ -32,8 +38,12 @@ const Input = styled('input', {
   textAlign: 'left',
   backgroundColor: blackA.blackA5,
   boxShadow: `0 0 0 1px ${blackA.blackA9}`,
-  '&:focus': {boxShadow: `0 0 0 2px black`},
-  '&::selection': {backgroundColor: blackA.blackA9, color: 'white'},
+  '&:focus': { boxShadow: `0 0 0 2px black` },
+  '&::selection': { backgroundColor: blackA.blackA9, color: 'white' },
+});
+
+const SendImg = styled('img', {
+  cursor: 'pointer',
 });
 
 const Flex = styled('div', {

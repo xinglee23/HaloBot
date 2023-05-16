@@ -1,11 +1,11 @@
 import * as Switch from '@radix-ui/react-switch';
-import {styled} from '@stitches/react';
-import {blackA} from '@radix-ui/colors';
+import { styled } from '@stitches/react';
+import { blackA } from '@radix-ui/colors';
 
 const SwitchMode = () => (
   <form>
-    <Flex css={{alignItems: 'center'}}>
-      <Label htmlFor='airplane-mode' css={{paddingRight: 15}}>
+    <Flex css={{ alignItems: 'center' }}>
+      <Label htmlFor='airplane-mode' css={{ paddingRight: 15 }}>
         dark mode
       </Label>
       <SwitchRoot id='airplane-mode'>
@@ -24,8 +24,8 @@ const SwitchRoot = styled(Switch.Root, {
   position: 'relative',
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
-  '&:focus': {boxShadow: `0 0 0 2px black`},
-  '&[data-state="checked"]': {backgroundColor: 'black'},
+  '&:focus': { boxShadow: `0 0 0 2px black` },
+  '&[data-state="checked"]': { backgroundColor: 'black' },
 });
 
 const SwitchThumb = styled(Switch.Thumb, {
@@ -38,10 +38,10 @@ const SwitchThumb = styled(Switch.Thumb, {
   transition: 'transform 100ms',
   transform: 'translateX(2px)',
   willChange: 'transform',
-  '&[data-state="checked"]': {transform: 'translateX(19px)'},
+  '&[data-state="checked"]': { transform: 'translateX(19px)' },
 });
 
-const Flex = styled('div', {display: 'flex'});
+const Flex = styled('div', { display: 'flex' });
 const Label = styled('label', {
   color: 'white',
   fontSize: 15,

@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import LabelInput from '../LabelInput';
 import dialog from '../../data/temp';
 import Card from '../Card';
-import {styled} from '@stitches/react';
+import { styled } from '@stitches/react';
 // import {useOperationKey} from '../../hooks';
-import {DECODER} from '../../libs/utils';
-import {chat} from '../../libs/gpt';
-import {ChatMessage} from '../../types';
+import { DECODER } from '../../libs/utils';
+import { chat } from '../../libs/gpt';
+import { ChatMessage } from '../../types';
 
 interface IMessage {
   id: string;
@@ -24,7 +24,7 @@ const DialogContent = () => {
   console.log('dialogdialog', dialog);
 
   // const {id, title, messages: msgTxt} = dialog as IMessage;
-  const {messages: msgTxt} = dialog as IMessage;
+  const { messages: msgTxt } = dialog as IMessage;
 
   // const {getKey, setKey} = useOperationKey();
   const [messages, setMessages] = React.useState<ChatMessage[]>([
@@ -51,7 +51,7 @@ const DialogContent = () => {
   const readStream = async (
     reader: ReadableStreamDefaultReader<Uint8Array>
   ) => {
-    const {done, value} = await reader.read();
+    const { done, value } = await reader.read();
     if (done) {
       reader.closed;
       return;
@@ -71,10 +71,10 @@ const DialogContent = () => {
       messages.pop();
     }
 
-    messages.push({role: 'user', content});
-    messages.push({role: 'assistant', content: ''});
+    messages.push({ role: 'user', content });
+    messages.push({ role: 'assistant', content: '' });
     // 调用接口 获取数据
-    const {status, data, message} = await chat(messages, 'xxxxxxx', GPT_V);
+    const { status, data, message } = await chat(messages, 'xxxxxxx', GPT_V);
 
     if (status === 'success' && data) {
       const reader = data.getReader();
@@ -88,25 +88,34 @@ const DialogContent = () => {
     sendChatMessage('this is a test!');
   }, []);
 
+  const handleClick = () => {};
+
   return (
     <DialogWrapper>
-      <div>
+      <ContextInner>
         {msgTxt.map((v) => (
           <div key={v.createdAt}>
             <Card type='question' text={v.question} />
             <Card type='answer' text={v.answer} />
           </div>
         ))}
-      </div>
-      <LabelInput />
+      </ContextInner>
+      <LabelInput onClick={handleClick} />
     </DialogWrapper>
   );
 };
 
 const DialogWrapper = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
   padding: '20px 20px 20px',
   width: '100%',
   height: '80vh',
+  overflow: 'auto',
+});
+
+const ContextInner = styled('div', {
+  width: 800,
   overflow: 'auto',
 });
 

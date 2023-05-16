@@ -1,10 +1,10 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import {styled} from '@stitches/react';
-import {violet, blackA} from '@radix-ui/colors';
+import { styled } from '@stitches/react';
+import { violet, blackA } from '@radix-ui/colors';
 import chatGPTImage from '../../assets/chat-gpt.webp';
 
-const Avatar = (props: {type: 'question' | 'answer'}) => (
-  <Flex css={{gap: 20}}>
+const Avatar = (props: { type: 'question' | 'answer' }) => (
+  <Flex css={{ gap: 20 }}>
     <AvatarRoot>
       {props.type === 'question' && (
         <AvatarFallback delayMs={600}>ME</AvatarFallback>
@@ -49,6 +49,6 @@ const AvatarFallback = styled(AvatarPrimitive.Fallback, {
   fontWeight: 500,
 });
 
-const Flex = styled('div', {display: 'flex'});
+const Flex = styled('div', { display: 'flex' });
 
 export default Avatar;
