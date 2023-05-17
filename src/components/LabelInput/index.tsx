@@ -3,11 +3,13 @@ import { blackA } from '@radix-ui/colors';
 import sendSvg from '../../assets/send.svg';
 
 interface IProps {
+  onChange: (value: string) => void;
   onClick: () => void;
 }
 const LabelInput = (props: IProps) => {
-  const handleChange = (e: any) => {
-    console.log('eeeeee', e.target.value);
+  const handleChange = ({ target: { value } }) => {
+    console.log('eeeeee', value);
+    props.onChange?.(value);
   };
   return (
     <Flex>

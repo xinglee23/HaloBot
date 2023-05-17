@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LabelInput from '../LabelInput';
-import dialog from '../../data/temp';
 import Card from '../Card';
 import { styled } from '@stitches/react';
 // import {useOperationKey} from '../../hooks';
@@ -20,26 +19,25 @@ interface IMessage {
 
 const GPT_V = 'gpt-3.5-turbo';
 
+// 消息列表
+const messageList = [
+  {
+    role: 'system',
+    content: 'I am ChatGPT, a large language model trained by OpenAI.',
+  },
+  {
+    role: 'system',
+    content:
+      'Instructions you must follow:\n- If there is a code block in the answer then wrap it in triple backticks.\n- Also denote the code block with the language name.\n- You can use LaTeX in the answer when needed.',
+  },
+];
+
 const DialogContent = () => {
-  console.log('dialogdialog', dialog);
-
-  // const {id, title, messages: msgTxt} = dialog as IMessage;
-  const { messages: msgTxt } = dialog as IMessage;
-
+  const [text, setText] = useState('');
   // const {getKey, setKey} = useOperationKey();
-  const [messages, setMessages] = React.useState<ChatMessage[]>([
-    {
-      role: 'system',
-      content:
-        '你是 ChatGPT，OpenAI 训练的大型语言模型，尽可能Authentic, concise,accurate的回答问题。',
-    },
-    {
-      role: 'assistant',
-      content: `
-      你好，我是神奇海螺，欢迎提问
-      `,
-    },
-  ]);
+  const [messages, setMessages] = React.useState<ChatMessage[]>(
+    messageList as ChatMessage[]
+  );
 
   const appendLastMessageContent = (content: string) => {
     const newMsg = [...messages];
@@ -71,10 +69,19 @@ const DialogContent = () => {
       messages.pop();
     }
 
+    setMessages([]);
+
     messages.push({ role: 'user', content });
     messages.push({ role: 'assistant', content: '' });
     // 调用接口 获取数据
-    const { status, data, message } = await chat(messages, 'xxxxxxx', GPT_V);
+    const { status, data, message } = await chat(messages, '', GPT_V);
+
+    console.log(
+      'status, data, messagestatus, data, message',
+      status,
+      data,
+      message
+    );
 
     if (status === 'success' && data) {
       const reader = data.getReader();
@@ -84,23 +91,21 @@ const DialogContent = () => {
     }
   };
 
-  useEffect(() => {
-    sendChatMessage('this is a test!');
-  }, []);
-
-  const handleClick = () => {};
+  const handleClick = () => {
+    sendChatMessage(text);
+  };
 
   return (
     <DialogWrapper>
       <ContextInner>
-        {msgTxt.map((v) => (
-          <div key={v.createdAt}>
-            <Card type='question' text={v.question} />
-            <Card type='answer' text={v.answer} />
+        {messages.map((v, k) => (
+          <div key={k}>
+            {v.role === 'user' && <Card type='question' text={v.content} />}{' '}
+            {v.role === 'assistant' && <Card type='answer' text={v.content} />}
           </div>
         ))}
       </ContextInner>
-      <LabelInput onClick={handleClick} />
+      <LabelInput onChange={(value) => setText(value)} onClick={handleClick} />
     </DialogWrapper>
   );
 };
