@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import LabelInput from '../LabelInput';
 import Card from '../Card';
 import { styled } from '@stitches/react';
@@ -6,37 +6,13 @@ import { styled } from '@stitches/react';
 import { DECODER } from '../../libs/utils';
 import { chat } from '../../libs/gpt';
 import { ChatMessage } from '../../types';
-
-interface IMessage {
-  id: string;
-  title: string;
-  messages: {
-    answer: string;
-    createdAt: number;
-    question: string;
-  }[];
-}
-
-const GPT_V = 'gpt-3.5-turbo';
-
-// 消息列表
-const messageList = [
-  {
-    role: 'system',
-    content: 'I am ChatGPT, a large language model trained by OpenAI.',
-  },
-  {
-    role: 'system',
-    content:
-      'Instructions you must follow:\n- If there is a code block in the answer then wrap it in triple backticks.\n- Also denote the code block with the language name.\n- You can use LaTeX in the answer when needed.',
-  },
-];
+import { GPT_V, MESSAGE_LIST } from '../../constant';
 
 const DialogContent = () => {
   const [text, setText] = useState('');
   // const {getKey, setKey} = useOperationKey();
   const [messages, setMessages] = React.useState<ChatMessage[]>(
-    messageList as ChatMessage[]
+    MESSAGE_LIST as ChatMessage[]
   );
 
   const appendLastMessageContent = (content: string) => {

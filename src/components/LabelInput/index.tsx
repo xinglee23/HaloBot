@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { styled } from '@stitches/react';
 import { blackA } from '@radix-ui/colors';
 import sendSvg from '../../assets/send.svg';
@@ -7,9 +8,9 @@ interface IProps {
   onClick: () => void;
 }
 const LabelInput = (props: IProps) => {
-  const handleChange = ({ target: { value } }) => {
-    console.log('eeeeee', value);
-    props.onChange?.(value);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log('eeeeee', event.target.value);
+    props.onChange?.(event.target.value);
   };
   return (
     <Flex>
@@ -17,7 +18,7 @@ const LabelInput = (props: IProps) => {
         type='text'
         id='firstName'
         onChange={handleChange}
-        defaultValue='Pedro Duarte'
+        placeholder='Ask anything'
       />
       <SendImg src={sendSvg} onClick={props.onClick} />
     </Flex>
