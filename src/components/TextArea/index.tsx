@@ -7,7 +7,7 @@ interface IProps {
   onChange: (value: string) => void;
   onClick: () => void;
 }
-const LabelInput = (props: IProps) => {
+const TextArea = (props: IProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     console.log('eeeeee', event.target.value);
     props.onChange?.(event.target.value);
@@ -58,4 +58,4 @@ const Flex = styled('div', {
   justifyContent: 'center',
 });
 
-export default LabelInput;
+export default TextArea;

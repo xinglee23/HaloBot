@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LabelInput from '../LabelInput';
+import TextArea from '../TextArea';
 import Card from '../Card';
 import { styled } from '@stitches/react';
 // import {useOperationKey} from '../../hooks';
@@ -81,7 +81,7 @@ const DialogContent = () => {
           </div>
         ))}
       </ContextInner>
-      <LabelInput onChange={(value) => setText(value)} onClick={handleClick} />
+      <TextArea onChange={(value) => setText(value)} onClick={handleClick} />
     </DialogWrapper>
   );
 };
