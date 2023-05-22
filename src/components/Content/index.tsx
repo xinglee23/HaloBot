@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import TextArea from '../TextArea';
 import Card from '../Card';
 import { styled } from '@stitches/react';
-// import {useOperationKey} from '../../hooks';
+import Message from '../Message';
+import { useOperationKey } from '../../hooks';
 import { DECODER } from '../../libs/utils';
 import { chat } from '../../libs/gpt';
 import { ChatMessage } from '../../types';
@@ -10,7 +11,7 @@ import { GPT_V, MESSAGE_LIST } from '../../constant';
 
 const DialogContent = () => {
   const [text, setText] = useState('');
-  // const {getKey, setKey} = useOperationKey();
+  const { getKey, setKey } = useOperationKey();
   const [messages, setMessages] = React.useState<ChatMessage[]>(
     MESSAGE_LIST as ChatMessage[]
   );
@@ -68,6 +69,11 @@ const DialogContent = () => {
   };
 
   const handleClick = () => {
+    if (!getKey()) {
+      // const props = { messags: 'please input openai APIkey' };
+      // return <Message {...props} />;
+      return alert('please input API key');
+    }
     sendChatMessage(text);
   };
 
