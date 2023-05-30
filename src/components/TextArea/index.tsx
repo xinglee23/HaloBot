@@ -7,10 +7,10 @@ interface IProps {
   onChange: (value: string) => void;
   onClick: () => void;
 }
-const TextArea = (props: IProps) => {
+
+const TextArea: React.FC<IProps> = ({ onChange, onClick }) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log('eeeeee', event.target.value);
-    props.onChange?.(event.target.value);
+    onChange?.(event.target.value);
   };
   return (
     <Flex>
@@ -20,7 +20,7 @@ const TextArea = (props: IProps) => {
         onChange={handleChange}
         placeholder='Ask anything'
       />
-      <SendImg src={sendSvg} onClick={props.onClick} />
+      <Icon onClick={onClick} />
     </Flex>
   );
 };
@@ -45,9 +45,18 @@ const Input = styled('input', {
   '&::selection': { backgroundColor: blackA.blackA9, color: 'white' },
 });
 
-const SendImg = styled('img', {
+const Icon = styled('span', {
+  display: 'inline-block',
+  marginLeft: -50,
+  width: 24,
+  height: 50,
+  backgroundPosition: 'center',
+  backgroundImage: `url(${sendSvg})`,
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
   cursor: 'pointer',
-});
+  '&:focus': { boxShadow: `0 0 0 2px black` },
+})
 
 const Flex = styled('div', {
   position: 'fixed',
