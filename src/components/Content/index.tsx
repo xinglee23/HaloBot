@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import TextArea from '../TextArea';
 import Card from '../Card';
 import { styled } from '@stitches/react';
-import Message from '../Message';
 import { useOperationKey } from '../../hooks';
 import { DECODER } from '../../libs/utils';
 import { chat } from '../../libs/gpt';
@@ -11,7 +10,7 @@ import { GPT_V, MESSAGE_LIST } from '../../constant';
 
 const DialogContent = () => {
   const [text, setText] = useState('');
-  const { getKey, setKey } = useOperationKey();
+  const { getKey } = useOperationKey();
   const [messages, setMessages] = React.useState<ChatMessage[]>(
     MESSAGE_LIST as ChatMessage[]
   );
@@ -37,7 +36,7 @@ const DialogContent = () => {
       appendLastMessageContent(json.choices[0].delta.content ?? '');
     });
     await readStream(reader);
-  };
+  }
 
   // 发送消息
   const sendChatMessage = async (content: string) => {
