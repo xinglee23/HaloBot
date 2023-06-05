@@ -7,8 +7,10 @@ import { DECODER } from '../../libs/utils';
 import { chat } from '../../libs/gpt';
 import { ChatMessage } from '../../types';
 import { GPT_V, MESSAGE_LIST } from '../../constant';
+import DialogDemo from '../Dialoag';
 
 const DialogContent = () => {
+  const [visible, setVisible] = useState(false);
   const [text, setText] = useState('');
   const { getKey } = useOperationKey();
   const [messages, setMessages] = React.useState<ChatMessage[]>(
@@ -69,15 +71,14 @@ const DialogContent = () => {
 
   const handleClick = () => {
     if (!getKey()) {
-      // const props = { messags: 'please input openai APIkey' };
-      // return <Message {...props} />;
-      return alert('please input API key');
+      return setVisible(true);
     }
     sendChatMessage(text);
   };
 
   return (
     <DialogWrapper>
+      <DialogDemo open={visible} onOpenChange={() =>  setVisible(false)} />
       <ContextInner>
         {messages.map((v, k) => (
           <div key={k}>

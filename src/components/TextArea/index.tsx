@@ -17,6 +17,9 @@ const TextArea: React.FC<IProps> = ({ onChange, onClick }) => {
       <Input
         type='text'
         id='firstName'
+        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+          if (event.key?.toLowerCase() === 'enter') onClick();
+        }}
         onChange={handleChange}
         placeholder='Ask anything'
       />
